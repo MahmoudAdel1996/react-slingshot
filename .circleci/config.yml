@@ -6,10 +6,6 @@ jobs:
     steps:
       - checkout
       - run: npm i
-      - save_cache:
-          paths:
-            - "/src/node_modules"
-          key: "npm-Packages"
       - run:
           name: "run build"
           command: npm run lint
@@ -19,9 +15,6 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - "npm-Packages"
       - run:
           name: "run test"
           command: npm run test
@@ -31,9 +24,6 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - "npm-Packages"
       - run:
           name: "run security test"
           command: npm audit
