@@ -6,27 +6,22 @@ jobs:
     steps:
       - checkout
       - run: npm i
-      - run:
-          name: "run build"
-          command: npm run lint
+      - run: npm run lint
 
   test:
     docker:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: "run test"
-          command: npm run test
+      - run: npm i
+      - run: npm run test
 
   analyze:
     docker:
       - image: cimg/node:13.8.0
     steps:
       - checkout
-      - run:
-          name: "run security test"
-          command: npm audit
+      - run: npm audit
 
 workflows:
   ci-pipline-workflow:
